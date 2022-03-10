@@ -73,3 +73,5 @@ $ git log   // you will see (HEAD-> master, my1stbranch) to confirm your action
 $ git branch -d my1stbranch   // now that changes have been merged into the master, delete this branch
 $ git branch  // to see now you only have *master
 ```
+
+
