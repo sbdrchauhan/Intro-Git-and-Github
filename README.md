@@ -74,4 +74,16 @@ $ git branch -d my1stbranch   // now that changes have been merged into the mast
 $ git branch  // to see now you only have *master
 ```
 
+## Cloning and Forking Github Projects
+Cloning creates a copy of a repository on your local machine (via terminal). Forking modifies or extends a project (via github) without affecting the original project. Frequently, this is done to start out for your project from already developed codes (or projects) and building from there!
 
+**Forking** - takes a copy of a GitHub project/repository and use it as the base for a new project. You can also submit changes back to the original repository. Independently make changes to a project and when you are satisfied; you can submit a **pull request** to the original owner. Then, it remains on the owner's right whether to change the original files or not.
+
+You can clone the repository from the github to your local machine using https option (SSH is better) `git clone https:://web.url/to/github/repo`.
+
+To sync changes from local to GitHub:
+- git add <files>  // takes changed files to the staging area
+- git commit -m "message"
+- git push // to push all changes to remote repo
+  
+Use `git push` to push any changes from local repo to remote repo; and `git fetch` to sync changes from remote repo to your local repo. This action doesn't make any changes to the branch you are working on (you can manually merge changes to the branch). Some terminology people use-> **origin** generally refers to the repo of our local fork; and **upstream** refers to the original work.
