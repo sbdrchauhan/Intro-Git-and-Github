@@ -190,5 +190,34 @@ $ export ORIGIN=<your (forked) repo HTTPS URL>    // just for the sake of simpli
 $ echo $ORIGIN    // to see if the origin variable has the correct https link
 $ git clone $ORIGIN   // clone the repo
 $ ls    // to see that you got the dir of the repo (given you are in your desired place to clone the repo)
+$ cd /to/new/rep    
+$ git checkout -b feature-circle-500    // create a new branch and go into it in one step
+$ git branch    // to see you are in new branch * infront
+$ git status    // to see the current status of everything, which branches you are in
+$   // make changes to the files that you need to do
+$ git status    // now you will see that changes are made
+$ git diff      // to see the changes in more details
+$ git add .   // add all the changes you've made into the staging area
+$ git status    // now to see that all are in green and staged
+$ git config --global user.email  "your_email.com"
+$ git config --global user.name "your user name"  // telling git who you are, put email and username inside parenthesis
+$ git commit -m "changing the height and the width of the circle"
+$ git status    // now will say there is nothing to commit
+$ git branch    // check which branch you are in
+$ git checkout main   // change your branch to main after you are ready to merge your feature branch into the main
+$ git merge feature-circle-500    // merge the feature branch into the main
+$ git log   // to confirm that the branch is merged (you will see HEAD-> main, feature-circle-500)
+$ git branch -d feature-circle-500    // after you are done with the branch (merged to the main) you want to delete the branch
+$ git branch    // will now show you only available branch i.e. main
+$ git push origin main  // push your changes to the repo in your GitHub.com origin repo
+  // put the username (your github.com email) and password (personal token)
+  // verify now in your github.com to see the changes
+// Next step lets create a pull request
+// These steps are done from your github.com
+// Ensure you are on the Code tab. Click on the Contribute button and then on Open pull request.
+// In the "Comparing changes" panel, GitHub shows you that it is comparing the main branch of your fork to the main branch of the original repository, and that your changes can be merged. Click the Create pull request button.
+// You are taken to the Open pull request screen. Notice that your commit message appears as the title of the pull request. Since we signed the commit, the body contains the email you configured in the previous step.
+// That's it!
 ```
+
   
