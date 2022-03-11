@@ -181,6 +181,14 @@ A GitHub developer communicates with other using these commands:
   * **git-send-email** to send your e-mail submission w/o corruption by your MUA
   * **git-request-pull** to create a summary of changes for your upstream to pull
   
+## Hands-On Lab: Cloning and Forking GitHub Projects
+* The first step is to **fork** any public repository or the project that you want to work on.
+* After forking and obtaining the copy of the **upstream**, as one of your own repo (this is your **origin**), clone it using either (https, ssh)
 
-  
+```console
+$ export ORIGIN=<your (forked) repo HTTPS URL>    // just for the sake of simplicity
+$ echo $ORIGIN    // to see if the origin variable has the correct https link
+$ git clone $ORIGIN   // clone the repo
+$ ls    // to see that you got the dir of the repo (given you are in your desired place to clone the repo)
+```
   
