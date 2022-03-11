@@ -110,9 +110,12 @@ The maintainers of the **upstream** project can review the changes in the PR and
 
 This **fork->clone->PR** workflow is summarized as follows:
 
+![alt text](https://github.com/sbdrchauhan/Intro-Git-and-Github/blob/main/fork.clone.pr.PNG)
 
+## When to Fork or Clone?
+By now you should be familiar with the difference between fork and clone. So let's summarize when you should clone vs. fork. Typically if you have access to a project repo e.g. as part of a team developing a codebase collaboratively, you can clone the repo and synchronize changes from your local copy of the repo using pull and push.
 
-
+If however there is a public project that you want to contribute to but do not have write access to, or use a public project as a starting point for your own project, you can fork the project. Then work with the forked codebase by cloning it to your machine and collaborating with your development team working on the fork using the pull-push synchronization with your fork of the project. But if you want to contribute your changes back to the upstream project (the original project that you forked from), you can submit your changes using a pull request.
 
 ## Cloning and Forking Github Projects
 Cloning creates a copy of a repository on your local machine (via terminal). Forking modifies or extends a project (via github) without affecting the original project. Frequently, this is done to start out for your project from already developed codes (or projects) and building from there!
@@ -155,8 +158,29 @@ To keep a fork in sync with the original work from a local clone:
 * To merge changes into the master branch
   * **git merge upstream/master**   // merges changes to the master branch
   
+## Summary
+* **clone**
+  * A clone is a copy of the project that you can make changes and work on
+  * The project from which you clone from is called the **origin**
+  * You can **pull** updates from the **origin** and **push** your changes back to it
+* **fork**
+  * A fork is a separate copy of a project that you can make changes independently of the original project
+  * The project that you fork from is referred to as the **upstream** project
+  * You can suggest changes back to the upstream project by submitting a **pull request** (PR)
+  
+> FYI: Although the usual workflow to start with the codebase of another project is to first fork it and then clone the fork, you may be tempted to simply clone the upstream project since it is quite convenient to do so from your local machine using the git clone command. If you do so, you will note that the project you clone from will by default become the origin repo. But since you likely don't have write access to the upstream repo that you cloned from, you will not be able to push your changes to it. Don't worry. You can easily rename the origin to upstream using the command git remote rename origin upstream and then add a new origin using git remote add origin <url> to point to the URL of a new GitHub repo that you have created or have access to, and use that repo for making your changes to the fork's code.
   
   
+## Managing GitHub projects
+
+A GitHub developer communicates with other using these commands:
+  * **git-clone** from the upstream to prime the local repository
+  * **git-pull** and **git-fetch** from "origin" to keep up-to-date with the upstream
+  * **git-push** to shared repository
+  * **git-format-patch** to prepare e-mail submission
+  * **git-send-email** to send your e-mail submission w/o corruption by your MUA
+  * **git-request-pull** to create a summary of changes for your upstream to pull
   
+
   
   
