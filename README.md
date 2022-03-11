@@ -74,6 +74,27 @@ $ git branch -d my1stbranch   // now that changes have been merged into the mast
 $ git branch  // to see now you only have *master
 ```
 
+Let's say we have one master repository in GitHub.com; from there multiple developers **fork** and make there own copy of the repository in each of their's github.com. This own version of repo in github.com is called **local repo**. Finally, each developer can now **clone** to their own version of repo from their own github.com repo.The master repo is the **remote repo**.
+
+**Clone**
+
+Let's say a new developer now joins the team to collaborate on the project. This developer can create a identical copy of the **remote repo** using the **git clone** operation. The remote repo from which the project is originally cloned from is also referred to as the **origin**.
+
+## Creating Branches and Sync Changes
+After cloning the repo to the local machine, a developer can start making changes to the codebase.This could be for tasks like adding features and enhancements or fixing bugs. Normally, developer are asked to use **git branch** to create a branch e.g. *feature1-branch*, make that branch active using **git checkout** and make necessary changes within that branch - such as adding or editing files. The developer saves their changes often within the branch by using **git add** followed by **git commit**. Once all the code changes and developments are complete or looks okay, rather than merging to the main branch directly, it is often a good practice to **push** the new branch with changes to **origin** where other developers/reviewers can test/review the changes before merging the branch to main.
+
+> NOTE: Since in this scenario the *feature1-branch* was developed by a new developer on the project, that developer may not have the access to merge their branch with main in **origin**. In fact, in many projects, only the project maintainers or admins are allowed to merge to the main branch, or in some sames a peer review may be required. In order to request that your changes be reviewed and merged with the main branch, many projects require that a **Pull Request (PR)** be submitted. Whereas, in some cases, e.g. if you are a lone developer on the project, this PR step may be omitted and you could merge and push your changes directly if you have write access to the origin repo.
+
+Every once in a while, a developer may want to get the latest copy of the repo from **origin** to serve as the base for making changes or reviewing changes by others. For example, this may be the case after the changes in *feature1-branch* have been pushed to **origin** and the peer developer wants to review the code. The **git fetch** command can be used for this purpose. The **git diff** command can help others reviewing your code to identify and compare the changes. Once a peer reviewer or project maintainer has reviewed the changes, and is satisfied, the reviewer will **git checkout** the main branch and then **git merge** the new *feature1-branch*, which can then be deleted. After the branch is merged locally, the reviewer can **git push** the updated main branch back to **origin**.
+
+> NOTE: **git-remote -v** command can be used to check which remote repos you are synchronizing push and fetch changes with.
+
+Another option for getting the latest copy of the repo is to use the **git pull** command. The **pull** command in effect is a combination of **fetch** and **merge**. That is, using this single command, you can both fetch and merge the changes into your local repo. For example, another developer who wants to use the updated codebase with the *feature1* changes that have been merged to main branch in origin, can use the **git pull** command to **fetch** the updated codebase from the origin and **merge** with his/her local codebase before starting development on a new feature.
+
+This **clone->branch->merge** workflow is how things are done Please see the flow diagram of this task in below:
+
+
+
 ## Cloning and Forking Github Projects
 Cloning creates a copy of a repository on your local machine (via terminal). Forking modifies or extends a project (via github) without affecting the original project. Frequently, this is done to start out for your project from already developed codes (or projects) and building from there!
 
@@ -95,6 +116,28 @@ Use `git push` to push any changes from local repo to remote repo; and `git fetc
 * Independently make changes to a project
   * Submit a **pull** request to the orginial project owner
   * Owner decides whether to accept updates
+  
+## Steps in Forking a Project
+* Navigate to the repository that you want to fork
+* Top right corner, click **Fork**
+
+## Syncing a Fork of a Project
+To keep a fork in sync with the original work from a local clone:
+* Create a local clone of the project
+* Configure Git to sync your fork
+  * Open the Terminal and change to the directory containing the clone
+  * To access the remote repository, type **git remote -v**
+  * Type **git remote add upstream** \<clone directory\>
+  * To see the change, type **git remote -v**
+  
+## Commands for Managing Forks
+* To grab upstream branches
+  * **git fetch upstream**  // to grab upstream branches
+* To merge changes into the master branch
+  * **git merge upstream/master**   // merges changes to the master branch
+  
+  
+  
   
   
   
