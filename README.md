@@ -215,8 +215,10 @@ $ git push origin main  // push your changes to the repo in your GitHub.com orig
 // Next step lets create a pull request
 // These steps are done from your github.com
 // Ensure you are on the Code tab. Click on the Contribute button and then on Open pull request.
-// In the "Comparing changes" panel, GitHub shows you that it is comparing the main branch of your fork to the main branch of the original repository, and that your changes can be merged. Click the Create pull request button.
-// You are taken to the Open pull request screen. Notice that your commit message appears as the title of the pull request. Since we signed the commit, the body contains the email you configured in the previous step.
+// In the "Comparing changes" panel, GitHub shows you that it is comparing the main branch of your fork to the main branch of the original repository, 
+  and that your changes can be merged. Click the Create pull request button.
+// You are taken to the Open pull request screen. Notice that your commit message appears as the title of the pull request. Since we signed the commit, 
+  the body contains the email you configured in the previous step.
 // That's it!
 ```
 
