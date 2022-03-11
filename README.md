@@ -93,6 +93,25 @@ Another option for getting the latest copy of the repo is to use the **git pull*
 
 This **clone->branch->merge** workflow is how things are done Please see the flow diagram of this task in below:
 
+![alt text](https://github.com/sbdrchauhan/Intro-Git-and-Github/blob/main/git-flow-digram.PNG)
+
+## Fork
+If a developer wants to create a derivative project with another project as the starting point, or work on a project using a separate or independent clone, the developer can choose to **fork** a project. You can fork any public project.
+
+> NOTE: The fork option is only available using the web interface and there is no git command to create fork. You can however use a **git clone** workaround - see below for more.
+
+Once the project has been forked, the developer with access to the fork can work on updating and making changes to the fork using the same workflow as already described previously i.e. the forked copy of the project now becomes the **origin** and developers with access to **origin** can create clones of it on their local machines, where they can create and merge branches, and synch changes with the origin using pull and push.
+
+However it is important to note that the synch of changes using merge and push can only be done with repos that the developers have write access to i.e. in this case their fork of the project i.e. the **origin** from which they create their local clones. But what if a developer wants to contribute their changes back to the **upstream** project that they do not have access to? In this case they can submit **pull request** or PR with their proposed changes. A **pull request** can be opened by going to the project's homepage, navigating to the Pull Requests tab, and then clicking New Pull Request.
+
+> NOTE: the term **Pull Request** should not be confused with the **git pull** command that you use to **fetch** and **merge** the latest codebase into your local repo. A **Pull Request**, as the name implies, is merely a request to review and **pull** your proposed changes. As part of the PR, you provide details of the proposed changes and your implementation.
+
+The maintainers of the **upstream** project can review the changes in the PR and decide to merge them or not. In some cases, they may provide feedback (by commenting in the PR) or ask the submitter of the PR to perform some confict resolution such as applying their changes to the latest codebase and resubmitting the PR.
+
+This **fork->clone->PR** workflow is summarized as follows:
+
+
+
 
 
 ## Cloning and Forking Github Projects
