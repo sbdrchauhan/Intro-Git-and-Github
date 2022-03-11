@@ -87,3 +87,14 @@ To sync changes from local to GitHub:
 - git push // to push all changes to remote repo
   
 Use `git push` to push any changes from local repo to remote repo; and `git fetch` to sync changes from remote repo to your local repo. This action doesn't make any changes to the branch you are working on (you can manually merge changes to the branch). Some terminology people use-> **origin** generally refers to the repo of our local fork; and **upstream** refers to the original work.
+  
+## Forking a Project
+* Forking
+  * Takes a copy of GitHub repository to use it as the base for a new project
+  * Submit changes back to the original repository
+* Independently make changes to a project
+  * Submit a **pull** request to the orginial project owner
+  * Owner decides whether to accept updates
+  
+  
+  
