@@ -1,6 +1,9 @@
 # Intro-Git-and-Github
 ## List of references:
 1. [Getting Started with Git and GitHub](https://www.coursera.org/learn/getting-started-with-git-and-github)
+2. [Introduction to Git and GitHub Google](https://www.coursera.org/learn/introduction-git-github)
+
+<hr/>
 
 The version control system helps to keep track of the changes made in your documents or the projects. So, it becomes easier for you to recover the older version of your work, if you make a mistake in the newer version of the documents. This also makes the Collaboration with others much easier.
 
@@ -232,6 +235,12 @@ $ git push origin main  // push your changes to the repo in your GitHub.com orig
 * Integrator – manages changes made by developers
 * Repository Administrator – configures and maintains access to the repository
   
+  
+# Introduction to Git and GitHub
+If you have two different but very similar files names `file1.py` and `file2.py`, and you would like to find what are the two differences between them, you could easily find it using `diff file1.py file2.py`, with `diff -u file1.py file2.py` the differences are more clearly seen. Or even better if you want to save the difference so that others will see it when you send to them `diff -u file1.py file2.py > change.diff`; this re-directs the output to the diff file.
+  
+`patch file1.py < file1.diff` applies changes in **diff** file into the **file1.py** file. So, this is how we generate the fixed file or `diff.file` which contains the fixed version of the file. Once you make the fixed version you can compare between the old and new file using `diff -u` and then finally applying the `patch` for other people who receives the `diff` file.
+                             
 
 
   
