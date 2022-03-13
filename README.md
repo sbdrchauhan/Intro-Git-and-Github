@@ -257,9 +257,16 @@ $ git init      // this command then adds .git folder which contains all the mea
           // we don't touch it; only interacts via git command
 ```
   
-
+> NOTE: after re-editing the file and before adding it to staging area, you can do `git diff fileName` to see the differences between the files. After you are happy with the changes, now you can stage it using `git add fileName`.
   
-
+```console
+$ git commit -a -m    // a shortcut to stage any changes to tracked files and commit them in one step
+$ git log -p    // produces patch text, with + and - of lines added and removed same as diff -u
+$ git log --stat  // even more stats, which files changed, how many lines added and or removed
+$ git show commit_identifier    // to show more details of the particular commit
+$ git rm fileName   // removing the file w/ git method; change is staged ready to be commit
+$ git mv file1 file2  // renaming the file; change is staged ready to be commit
+```
                      
                              
 
