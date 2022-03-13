@@ -237,9 +237,30 @@ $ git push origin main  // push your changes to the repo in your GitHub.com orig
   
   
 # Introduction to Git and GitHub
-If you have two different but very similar files names `file1.py` and `file2.py`, and you would like to find what are the two differences between them, you could easily find it using `diff file1.py file2.py`, with `diff -u file1.py file2.py` the differences are more clearly seen. Or even better if you want to save the difference so that others will see it when you send to them `diff -u file1.py file2.py > change.diff`; this re-directs the output to the diff file.
+If you have two different but very similar files names `file1.py` and `file2.py`, and you would like to find what are the two differences between them, you could easily find it using `diff file1.py file2.py`, with `diff -u file1.py file2.py` the differences are more clearly seen. Or even better if you want to save the difference so that others will see it when you send to them `diff -u file1.py file2.py > change.diff`; this re-directs the output to the diff file.`patch file1.py < file1.diff` applies changes in **diff** file into the **file1.py** file. So, this is how we generate the fixed file or `diff.file` which contains the fixed version of the file. Once you make the fixed version you can compare between the old and new file using `diff -u` and then finally applying the `patch` for other people who receives the `diff` file..
+
+The above task is however, not the most efficient way to do those tasks. Hence, version control system is what we do and learn in next sections.
+
+We always start our Git Journey by telling Git who we are:
+
+```console
+$ git config --global user.email "email@example.com"  // add your GitHub email
+$ git config --global user.name "username"      // add your GitHub username
+$ git config -l     // tells what is the current configuration of the Git system is; especially tells you your current email and username is?
+```
+
+After this we can start from scratch: using `git init` or from the copy of others repo already existed in GitHub.com using `git clone`. If we want to start from scratch:
+```console
+$ mkdir my_dir
+$ cd my_dir
+$ git init      // this command then adds .git folder which contains all the meat of code
+          // we don't touch it; only interacts via git command
+```
   
-`patch file1.py < file1.diff` applies changes in **diff** file into the **file1.py** file. So, this is how we generate the fixed file or `diff.file` which contains the fixed version of the file. Once you make the fixed version you can compare between the old and new file using `diff -u` and then finally applying the `patch` for other people who receives the `diff` file.
+
+  
+
+                     
                              
 
 
