@@ -266,8 +266,27 @@ $ git log --stat  // even more stats, which files changed, how many lines added 
 $ git show commit_identifier    // to show more details of the particular commit
 $ git rm fileName   // removing the file w/ git method; change is staged ready to be commit
 $ git mv file1 file2  // renaming the file; change is staged ready to be commit
+$ git reset HEAD file1.tx   // removes file1.txt from the staged area and are now untracked by the git
+$ git commit --amend    // will help to modify and add changes to the most recent commit; avoid amending commits to already made in public
+$ git revert HEAD   // rollback to the most recent commit
 ```
-                     
+
+## Merge Conflict Situation:
+Merge conflicts appear whenever the main branch and any feature-branch edits the same file in the same line. In that case we can either choose one or the another or change them altogether. Let's see the example below:
+```console
+$ // let's first be in main branch, change file1.txt (commit it)
+  // now checkout the feature-branch, change the same file1.txt in the same line numbers (commit this also)
+  // go back to main branch and try to merge the feature-branch
+$ git merge feature-branch    // shows CONFLICT; and that the Automatic merge failed
+$ git status    // tells which files are having the conflicts
+  // open this conflict file, and do the edits
+$ git add conflict_file1.txt    // add this conflicted file to tell that it is resolved
+$ git status    // will tell that all conflicts are resolved and need to merge
+$ git commit 
+$ git log --graph --oneline   // helps to see the merge and commits in more better way
+```
+
+
                              
 
 
