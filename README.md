@@ -486,7 +486,11 @@ This will cause a lost of commits and reshuffling of commits history, which you 
 
 > Having a good commit message is important.
 
-
-
+```console
+$ git pull origin main  // pulls all the changes from the origin main branch (remote) to our local repo
+     // once your local repo have similar states as the remote repo
+     // you are able to push your changes to remote now
+$ git push origin main
+```
 
 
