@@ -439,5 +439,54 @@ $ git push  // finally, push our changes back into the remote repo
 
 > Move the current branch on top of the refactor branch.
 
+## Another example of Rebase
+If we want to rebase on the master branch when someone else already made changes in remote master, and we want to push our changes in same remote master and make the commit linear. Use of `fetch, rebase, push` to merge our changes with our collaborator changes while keeping our history of commits linear.
+```console
+  // make changes or edits to the script file in your local repo.
+  // save it, and commit it
+  // now we want to make sure if our colleague also worked on the remote repo master
+  // where we will try to push our local changes
+  // git pull will automatically do three-way merge if necessary (but we don't want this)
+  // we want project's commit history linear
+  // so we do, git fetch, this will bring the remote repo master changes to us but won't apply in our local repo master yet
+$ git fetch  // we see some changes, at this point if we try merge, it will be three-way merge (don't want it, again)
+$ git rebase origin/master  // to make current branch on top of our local master
+     // but if error, it will show it, what worked, what needs to be resolve and so on
+     // address the conflicts (most probably)
+     // look into the conflict_file and try to address it (what to keep and what not to, removing the >> << symbols)
+     // once fix conflict and script working back
+$ git add conflict_file 
+$ git rebase --continue  // rebase should finish successfully
+$ git log --graph --oneline  // will let you see what history looks like
+  // we see our changes are on top of master w/o doing three-way merge
+$ git push  // finally push our changes to the remote repo
+```
+> Generally, **git rebase** is an alternative to which command?
+
+> **git merge**  --Rebasing instead of merging rewrites history and maintains linearity, making for cleaner code.
+
+## Best Practices for Collaboration
+> Always synchronize your branches before starting work on your own.
+
+This will let you know that you are working with the current status or may need some rebasing, minimize conflicts, too.
+
+> Avoid having very large changes that modify a lot of different things.
+
+Make each commit a self-contained and fulfil.
+
+> Remember to push your changes often, and pull often before you do your new work.
+
+> When working on a big change, it makes sense to have a separate feature branch
+
+> Regularly merge changes made on the master branch back onto the feature branch
+
+> You should't rebase changes that have been pushed to remote repos
+
+This will cause a lost of commits and reshuffling of commits history, which you don't want to happen to the public repos.
+
+> Having a good commit message is important.
+
+
+
 
 
