@@ -351,6 +351,41 @@ $ git revert commitID   // opens up editor, add the reason for the ROLLBACK
   // git produces a new commitID for this rollback as well
 ```
 
+## Working with Remotes
+```console
+$ git remote -v  // shows you the url of the origin remote
+  // fetch and push urls might be different sometimes
+$ git remote show origin   // tons of info. about the remote
+   // might contain (local out of date)
+   // meaning your local repo is not sync with the remote main branch
+   // might show you remote branches, which we don't have in our local
+   // ($ git checkout remote-branch) if you want
+   // $ git remote update  -> if we don't want to merge but access all remote branches
+    // next we can git checkout to these branches, and merge when necessary
+$ git branch -r   // shows (read only) of the branches in remote repo
+  // however we can change, if we pull, merge to local, and do push
+$ git status  // let's you know if your local master branch is on par
+              // with the remote master branch
+  // if other people are making branches and working indpendently
+$ git fetch  // will list all the remote branches
+$ git checkout branchID  // to move in that particular remote branch
+$ git log  // to see all the logs of this branch now
+$ git log origin/master  // shows the logs of remote and local as well
+$ git status  // will tell us that our branch is behind master if that is the case
+$ git merge origin/master  // will merge remote master to our local master branch
+ // first we do git fetch to see the update, and if we are happy
+ // we do git merge
+ // git pull instantly does above two steps in one line
+$ git pull  // shows both info of fetch and merge
+$ git log -p -1   // to see what are the changes really in last commit
+```
+
+> What's the main difference between `git fetch` and `git pull`?
+
+> `git fetch` fetches remote updates but doesn't merge; `git pull` fetches remote updates and merges. `git pull` instantly merges while `git fetch` only retrieves remote updates.
+
+
+
 
 
 
