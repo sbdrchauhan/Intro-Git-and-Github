@@ -128,10 +128,10 @@ Cloning creates a copy of a repository on your local machine (via terminal). For
 You can clone the repository from the github to your local machine using https option (SSH is better) `git clone https:://web.url/to/github/repo`.
 
 To sync changes from local to GitHub:
-- git add <files>  // takes changed files to the staging area
-- git commit -m "message"
-- git push // to push all changes to remote repo
-  
+  * git add file_names // takes changed files to the staging area
+  * git commit -m "message"
+  * git push // to push all changes to remote repo
+
 Use `git push` to push any changes from local repo to remote repo; and `git fetch` to sync changes from remote repo to your local repo. This action doesn't make any changes to the branch you are working on (you can manually merge changes to the branch). Some terminology people use-> **origin** generally refers to the repo of our local fork; and **upstream** refers to the original work.
   
 ## Forking a Project
@@ -171,7 +171,7 @@ To keep a fork in sync with the original work from a local clone:
   * The project that you fork from is referred to as the **upstream** project
   * You can suggest changes back to the upstream project by submitting a **pull request** (PR)
   
-> FYI: Although the usual workflow to start with the codebase of another project is to first fork it and then clone the fork, you may be tempted to simply clone the upstream project since it is quite convenient to do so from your local machine using the git clone command. If you do so, you will note that the project you clone from will by default become the origin repo. But since you likely don't have write access to the upstream repo that you cloned from, you will not be able to push your changes to it. Don't worry. You can easily rename the origin to upstream using the command git remote rename origin upstream and then add a new origin using git remote add origin <url> to point to the URL of a new GitHub repo that you have created or have access to, and use that repo for making your changes to the fork's code.
+> FYI: Although the usual workflow to start with the codebase of another project is to first fork it and then clone the fork, you may be tempted to simply clone the upstream project since it is quite convenient to do so from your local machine using the git clone command. If you do so, you will note that the project you clone from will by default become the origin repo. But since you likely don't have write access to the upstream repo that you cloned from, you will not be able to push your changes to it. Don't worry. You can easily rename the origin to upstream using the command git remote rename origin upstream and then add a new origin using **git remote add origin url** to point to the URL of a new GitHub repo that you have created or have access to, and use that repo for making your changes to the fork's code.
   
   
 ## Managing GitHub projects
@@ -224,7 +224,7 @@ $ git push origin main  // push your changes to the repo in your GitHub.com orig
   request. Since we signed the commit, the body contains the email you configured in the previous step.
 // That's it!
 ```
-  
+
 ## Module Summary
 * Branches are used to isolate changes to code. When the changes are complete, they can be merged back into the main branch.
 * Repositories can be cloned to make it possible to work locally, then sync changes back to the original.
@@ -313,6 +313,46 @@ $ git commit -m "message"  // as usual now, push it, pull request (maybe)
 ```
   
 **Scene 3: Undoing changes already commited**:
+Maybe you committed and now realized that you needed to add something or that your commit message was not descriptive enough. Problems like these can be solve using `--amend` option of the `git commit` command. Let's see one of the examples:
+```console
+    // you added two files in your repo; file1 and file2
+$ git add file1
+$ git commit -m "Add two new files"   // this message is not right
+    // we have actually added two new files
+    // we can fix this; start by adding the other file
+    // and amending the commits
+$ git add file2
+$ git commit --amend    // opens the default editor
+    // you can edit the commit message with more info,
+    // also you can see now both files are in this commit
+  // save it and you are done!
+```
+> NOTE: you should never amend the commit in public repos (it will mess up the commit history); you can however amend the commit for your local repos.
+
+**Scene 4:revert the latest commit (ROLLBACK)**:
+You made a changes, committed on it, but the system was broken and now you want to quickly rollback to the previously working situation just before the commit. `git revert` is your friend. It won't mess up the history of the commit, it simply removes the unwanted lines that you did in the earlier commits leaving the record of exactly what happened.
+```console
+    // you edited one of the files in your repo
+    // you didn't tested it, and committed on it
+    // it broke the system (you checked its the case)
+$ git revert HEAD   // opens up the editor
+  // leave as is, and add the reason for ROLLBACK
+  // git revert is like a normal commit, so we see it in normal log
+$ git log -p -2 // see the patch lines and limit the output to 2
+```
+
+**Scene 5: revert to the commits way earlier (using commit ID)**:
+You might sometimes have to `revert` to way earlier state of the repo, you can achieve this by the help of the **commit ID**.
+```console
+$ git log   // to see the logs of commits you have made earlier (it's 40 character long string)
+$ git show commitID   // to see much better about this commitID we are interested in
+$ git revert commitID   // opens up editor, add the reason for the ROLLBACK
+  // save and done!
+  // git produces a new commitID for this rollback as well
+```
 
 
-  
+
+
+
+
