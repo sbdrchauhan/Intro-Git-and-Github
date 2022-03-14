@@ -287,8 +287,32 @@ $ git commit
 $ git log --graph --oneline   // helps to see the merge and commits in more better way
 ```
 
+## Undoing Changes/Things
 
-                             
+**Scene 1: Undoing the unstaged changes**: You made a bunch of changes to a file, but decide that you don't want to keep the changes and want the original version altogether. You can use `git checkout fileName` for this task. `checkout` allows us to check the file of its earlier states.
+```console
+  // you edit the script file, save it, try to run the script file but it shows now error, oof!
+$ git status    // let's you know that the file has been modified, changes not staged yet
+      // also tells you that you can checkout the previous version
+$ git checkout fileName   // this will already bring to the previous version
+$ git status    // now shows all good, nothing to commit as no modification
+  // now you can run the script as usual, it should run fine!
+```
+HEAD means current checked-out snapshot
+  
+**Scence 2: Undoing the staged changes**: You have staged it, but not commited it yet. `git rest` is your friend!
+```console
+  // you added temporary file for just the debugging purpose
+  // you add all the changes to staging area including this temporary file
+$ git add *   // adding all changes to the staging area
+$ git status    // check to see if you staged that temp. file as well
+$ git reset HEAD temp.file    // git will now untrack the temp.file for staging
+  // you can think reset as the counterpart of the add
+  // with add you add to staging area, with reset you remove from the staging area
+$ git commit -m "message"  // as usual now, push it, pull request (maybe)
+```
+  
+**Scene 3: Undoing changes already commited**:
 
 
   
