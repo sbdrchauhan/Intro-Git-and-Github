@@ -269,6 +269,7 @@ $ git mv file1 file2  // renaming the file; change is staged ready to be commit
 $ git reset HEAD file1.tx   // removes file1.txt from the staged area and are now untracked by the git
 $ git commit --amend    // will help to modify and add changes to the most recent commit; avoid amending commits to already made in public
 $ git revert HEAD   // rollback to the most recent commit
+$ git revert commitID   // will revert us back to the particular commit we would like to go to
 ```
 
 ## Merge Conflict Situation:
