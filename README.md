@@ -384,10 +384,60 @@ $ git log -p -1   // to see what are the changes really in last commit
 
 > `git fetch` fetches remote updates but doesn't merge; `git pull` fetches remote updates and merges. `git pull` instantly merges while `git fetch` only retrieves remote updates.
 
+## Solving Conflicts
+What if we send the **push** to the remote repo which has already been changed and that our main branch is not on par with the remote repo? **Pull-Merge-Push** cycle is your friend (see below):
+```console
+ // edit the file in a local repo
+ // git add this file, git commit this change with message
+$ git add -p  // let's you see the file changes and hit y to accept the changes
+$ git commit -m "message"
+$ git push  // this will fail, since our other collaborators has changed the remote repo (states)
+$ git pull  // first make your repo up-to-date with remote states (fetch+merge)
+  // but since remote repo also changed the same file in same lines
+  // merge won't be successful (need to resolve it manually)
+$ git log --graph --oneline --all  // to see what's going on with the branches
+$ git log -p origin/master // to see the actual commits
+  // go to that particular file(s) now and see which to keep and which to avoid
+  // git will merge other lines which were not colliding
+  // git only told us to manually resolve conflicts occurred in the same line
+$ git add conflict_file  // first need to add the problematic file
+$ git commit -m "message" // commit it w/ new message
+   // merge is now all good, we can now send our-push to the remote repo
+$ git push    // all good!
+$ git log --graph --oneline   // will tell us that the merge is now complete
+```
 
+**Working with the Remote Branches**:
+```console
+$ git branch -b branch1  // create branch1 and move into it (one line task)
+  // edit one of the files in your local repo
+  // add and commit it
+  
+  // make another changes
+  // add and commit it again
+  
+  // maybe make more changes individually and commit each time
+  
+$ git push -u origin branch1   // without trying to merge to the remote main branch
+  // we first want to push our changes (of the branch1) to the remote repo
+  // so our collaborator can view it before merging
+  // you will see new branch1 has been created in remote origin
 
+$ git checkout master  // first go to the master branch
+$ git pull   // pull the changes of the remote repo (our collab. has made)
+$ git log --graph --oneline --all // to see the all the branches
+$ git checkout branch1
+$ git rebase master
+$ git log --graph --oneline // we should see the master branch is linear with our commits
+$ git checkout master
+$ git merge branch1  // success
+$ git push --delete origin branch1  // to delete the branch1 from the remote origin branch
+$ git branch -d branch1  // to delete this branch from our local repo
+$ git push  // finally, push our changes back into the remote repo
+```
+> What does `git rebase refactor` do?
 
-
+> Move the current branch on top of the refactor branch.
 
 
 
