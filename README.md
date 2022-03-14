@@ -254,7 +254,7 @@ After this we can start from scratch: using `git init` or from the copy of other
 $ mkdir my_dir
 $ cd my_dir
 $ git init      // this command then adds .git folder which contains all the meat of code
-          // we don't touch it; only interacts via git command
+          // we dont touch it; only interacts via git command
 ```
   
 > NOTE: after re-editing the file and before adding it to staging area, you can do `git diff fileName` to see the differences between the files. After you are happy with the changes, now you can stage it using `git add fileName`.
