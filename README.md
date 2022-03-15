@@ -552,5 +552,8 @@ $ git log --graph --oneline --all -4  // shows now the divergence is gone
    // check the file contents of the PR in GitHub
    // it will show you the combined commit descriptions now
 ```
+**Code Reviews** Going through someone else's code, documentation, or configuration and checking that it all makes sense and follows the expected patterns.
 
+When it comes to coordinating who does what and when, a common strategy for active software projects is to use an **issue tracker**.
 
+**Continuous integration system (CI)** will build and test our code every time there's a change i.e. **Jenkins**. CI/CD (Continious integration/continuous deployment).
