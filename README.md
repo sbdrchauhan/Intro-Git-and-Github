@@ -494,4 +494,63 @@ $ git pull origin main  // pulls all the changes from the origin main branch (re
 $ git push origin main
 ```
 
+## The typical Pull Request Workflow on GitHub
+We fork the repo from GitHub, clone it and work from our local computer making the forked repo as our origin.
+```console
+ // fork the GitHub repo by pressing the fork button
+ // the forked copy will contains the current state of the repo, and the commit history
+$ git clone forked_repo_url
+  // you can cd into it, ls -l to list, git log to see commit history
+  // make your changes into this local repo
+  // let's suppose you want to add README.md file which was not there initially
+  // we make a new branch i.e. add-readme and work from the new branch
+$ git checkout -b add-readme  // create and switch into new branch in one step
+$ nano README.md  // and write the description inside the file
+  // save and commit it
+$ git add README.md
+$ git commit -m 'Add README.md file'
+   // to push this change to our forked repo, 
+   // we need to create corresponding remote branch
+$ git push -u origin add-readme  // asks username and password
+  // this should already make its effects in GitHub forked repo
+  // next, do the Pull Request (PR)
+  // but, do check if it is able to merge
+  // if not, we need to rebase our commit on top of the current commit
+  // describe why we are doing this PR, bug fixed, or sth
+  // create PR button, now
+```
+Even after submitting the PR we just made that included great-new feature, the project maintainer might say that it has some issues and that we need to fix it. How will we do? Maybe add some more documentations, or follow the project's guidelines, and so on.
+```console
+   // edit the README.md to add more description, let's say
+   // add and commit this README.md file now
+$ git commit -a -m 'Add more descriptions with an example in the README.md file'
+$ git push   // push this new changes back to our repo
+   // this will show that this new commit is a part of the same old PR (see commits tab)
+   // if we wanted to make the new PR, we need to go through the new-branch method that we did earlier
+   // check also the files changed tab to see all the effects 
+```
+
+## Squashing Changes (into single commit):
+Remember that you should not re-write history of repo that has already been published. But this rule is waived in case of PR, because it is just you who have clone and edited for your use case. Here in squashing we want to combine two or more previous commits into one single commit which will combine all the descriptions from the combined commits too.
+```console
+$ git rebase -i master  // rebasing on top of the master branch
+   // the editor will show commits from the oldest to the recent ones
+   // squash option will allow us to keep both the commits descriptions
+   // change second (last line) to squash to squash it to the first one
+   // save and exit this editor
+   // gives another file to edit, to include more description of this final commits now
+   // save and exit
+$ git show   // shows two changes are now squashed into one commit
+$ git status // to see that your branch and origin/branch diverged
+$ git log --graph --oneline --all -4  // show the diverge
+$ git push  // will throw an error
+   // cause remote repo has diverged from our current repo
+  // we don't want to merge, instead replace old (two) commits into one
+$ git push -f  // so do this push forcefully as is
+    // shows (forced update)
+$ git log --graph --oneline --all -4  // shows now the divergence is gone
+   // check the file contents of the PR in GitHub
+   // it will show you the combined commit descriptions now
+```
+
 
